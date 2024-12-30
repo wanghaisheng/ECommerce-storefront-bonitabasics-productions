@@ -6,7 +6,6 @@ import { AuthContext, TAuthContext } from "@/context/AuthContext";
 import { CouponContext, TCouponContext } from "@/context/CouponContext";
 import { CART, IMAGE, ROUTE } from "@/constants/index";
 
-import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -16,7 +15,6 @@ import Navbar from "react-bootstrap/Navbar";
 
 import { useValidateToken } from "@/hooks/useValidateToken";
 
-import styles from "@/styles/Header.module.scss";
 import CartIcon from "@/components/Header/CartIcon";
 import OverlayNav from "@/components/Navigation/OverlayNav";
 import SidebarCart from "@/components/SidebarCart/SidebarCart";
@@ -26,6 +24,7 @@ import LanguageToggleButton from "@/components/LangToggle/LocaleSwitcher";
 import LoadingOverlay from "@/components/Loading/LoadingOverlay";
 
 import { useLocale } from "next-intl";
+import CustomI18nLink from "../LangToggle/CustomI18nLink";
 
 export default function Header() {
   const router = useRouter();
@@ -101,14 +100,14 @@ export default function Header() {
             />
           </div>
 
-          <Link href={`/${locale}`} className={styles.BBP_Header__Logo}>
+          <CustomI18nLink href="/" locale={locale} name={null} home>
             <Image
               src={IMAGE.IMAGE_LOGO}
               width={65}
               height={65}
               alt="BBP Music Library"
             />
-          </Link>
+          </CustomI18nLink>
 
           <Navbar className="navbar-right">
             <Nav
